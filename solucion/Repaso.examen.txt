@@ -1,0 +1,54 @@
+1. Inicio
+2. nombre_empleado, X(1000)[{A-Z}, {a-z}, {BS}]
+3. cedula_empleado, i[0-n]
+4. horas_matutinas, d[0-n]
+5. horas_nocturnas, d[0-n]
+6. valor_cancelar, d[0-n]
+7. cancelar_matutinas, d[0-n]
+8. cancelar_nocturnas, d[0-n]
+9. valor_matutinas, i[0-n] <-- 10
+10. valor_nocturnas, i[0-n] <-- 15
+11. mensaje, X(5000)[{A-Z}, {a-z}, {BS}] <-- " "
+12. contador, i[0-n] <-- 1
+13. bandera, L <-- True
+14. opcion, X(1) [{A-Z}, {a-z}, {BS}] <-- s
+
+15. Mientras bandera == True entonces
+
+16. 	<<"Ingrese el nombre del empleado: "
+17. 	>>nombre_empleado
+18. 	<<"Ingrese la Identificacion del empleado: "
+19. 	>>cedula_empleado
+20. 	<<"Ingrese las horas trabajadas matutinas: "
+21. 	horas_matutinas
+22. 	<<"Ingrese las horas trabajadas nocturnas: "
+23. 	>>horas_nocturnas
+
+24. 	Si horas_nocturnas < 10 entonces
+25. 		cancelar_nocturnas =  horas_nocturnas * valor_nocturnas
+26.	De lo contrario
+27. 		cancelar_nocturnas = horas_nocturnas * 10 / 100 
+28. 	FinSi
+
+29. 	cancelar_matutinas =  horas_matutinas * valor_matutinas
+30. 	
+31. 	valor_cancelar = cancelar_matutinas + cancelar_nocturnas
+
+32.	mensaje <-- mensaje + "Nomina de trabajadores" + "\n\n" + "Rol del trabajador de nombre " + nombre_empleado + "y cedula"
+			+ cedula_empleado + "\n" + " Horas matutina trabajadas: " + horas_matutinas + "."+ "\n"
+			+ " Horas nocturnas trabajadas: " + horas_nocturnas + "." + "\n" + "Total a cancelar " + "$" + valor_cancelar
+			+ "\n\n" + "Numero de empleados " + contador
+33.	contador <-- contador + 1
+
+34.	<<"Si deseas terminar el proceso ingrese "s". "
+35.	>>opcion
+	
+36. 		Si opcion == s entonces
+37.			bandera <-- falsa
+38.		FinSi
+
+39. FinMientras
+
+40.	<<mensaje
+
+41. Fin
